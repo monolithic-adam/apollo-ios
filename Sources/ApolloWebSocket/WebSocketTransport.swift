@@ -275,7 +275,7 @@ public class WebSocketTransport {
                                               sendOperationIdentifiers: self.sendOperationIdentifiers,
                                               sendQueryDocument: true,
                                               autoPersistQuery: false)
-    let sequenceNumber = "\(sequenceNumberCounter.increment())"
+    let sequenceNumber = UUID().uuidString
 
     guard let message = OperationMessage(payload: body, id: sequenceNumber).rawMessage else {
       return nil
