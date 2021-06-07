@@ -182,6 +182,10 @@ public class WebSocketTransport {
                                                 kind: .unprocessedMessage(text)))
         }
 
+      case .startAck:
+        // Do nothing, this means the subscription is acknowledged
+      break
+
       case .connectionAck:
         acked = true
         writeQueue()
