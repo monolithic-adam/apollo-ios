@@ -201,7 +201,7 @@ public class WebSocketTransport {
     }
   }
 
-  private func notifyErrorAllHandlers(_ error: Error) {
+  private func notifyErrorAllHandlers(_ error: Error) { 
     for (_, handler) in subscribers {
       handler(.failure(error))
     }
@@ -275,7 +275,7 @@ public class WebSocketTransport {
                                               sendOperationIdentifiers: self.sendOperationIdentifiers,
                                               sendQueryDocument: true,
                                               autoPersistQuery: false)
-    let sequenceNumber = UUID().uuidString
+    let sequenceNumber = "\(sequenceNumberCounter.increment())"
 
     guard let message = OperationMessage(payload: body, id: sequenceNumber).rawMessage else {
       return nil
